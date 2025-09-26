@@ -1,3 +1,3 @@
 FROM alpine:latest
-CMD echo "Hello, World!"
-docker build -t hello-app:basic .
+
+CMD echo "Hello, ${GREETING_NAME:-World}!"
