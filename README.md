@@ -1,35 +1,63 @@
-# docker-greeting-app
+docker-greeting-app
+This is my take on the roadmap.sh Basic Dockerfile project. It’s a simple Docker setup using alpine:latest that prints “Hello, [name]!” to the console. You can swap out the name at runtime with an env variable. Built it to learn Docker basics and level up my DevOps game.
+What I Was Going For
 
-the project idea is  from 
+Make a Dockerfile with alpine:latest as the base, ‘cause it’s lightweight and fast.
+Get the container to say “Hello, [name]!” when it runs.
+Add a cool trick to change the name using GREETING_NAME at runtime.
+Learn how to build and run Docker images like a pro.
 
-https://roadmap.sh/projects/basic-dockerfile 
+How to Get Started
+Stuff You Need
 
-just a simple Docker project that demonstrates how to create a custom image based on Alpine Linux. The container greets with a customizable message.
+Docker: Gotta have Docker installed. Run docker --version to check it’s good.
+Git: For grabbing the code from my repo.
+I tested this on Linux Mint 22.2, but it should work on Linux, macOS, or Windows with Docker Desktop.
 
-## Project Goals
+Grabbing the Code
 
-This project was built as a learning exercise to understand the fundamentals of creating a `Dockerfile`. The goals were:
-- To create a Dockerfile using `alpine:latest` as the base image.
-- To have the container print "Hello, [name]!" to the console upon execution.
-- To implement an advanced feature allowing the greeting name to be customized at runtime.
+Clone my repo:git clone https://github.com/MohamedKamil-hub/docker-greeting-app
 
-## Getting Started
 
-### Prerequisites
-- Docker (or Podman configured to use the `docker` CLI command) must be installed on your system.
+Get into the project folder:cd docker-greeting-app
 
-### Getting the Code
 
-If you have found this project in a Git repository (like GitHub), you can get the code onto your local machine using `git clone`.
+Make sure you see the Dockerfile:ls
 
-1.  **Copy the repository URL.**
-2.  **Open your terminal** and run the following command, replacing `<repository-url>` with the actual URL:
+You should see Dockerfile and maybe a greeting.sh if I used one.
 
-    ```bash
-    git clone <repository-url>
-    ```
-3.  **Navigate into the project directory:**
+If you don’t wanna use Git, just download the ZIP from GitHub and unzip it.
+Building the Image
+Run this in the folder with the Dockerfile:
+docker build -t hello-app:advanced .
 
-    ```bash
-    cd <name-of-the-project-directory>
-    ```
+Check the image got built:
+docker images
+
+Running the Container
+
+Default run (says “Hello, World!”):docker run hello-app:advanced
+
+
+Custom run (says “Hello, Alice!” or whatever name you pick):docker run -e GREETING_NAME=Alice hello-app:advanced
+
+
+
+If the container keeps running, stop it like this:
+docker ps
+docker stop <container-id>
+
+What’s in the Dockerfile
+
+Starts with alpine:latest for a super small image.
+Sets up a script or command to print “Hello, $GREETING_NAME!”.
+Defaults to World if you don’t set GREETING_NAME.
+
+If Shit Hits the Fan
+
+Build fails: Make sure Docker’s running (sudo systemctl start docker) and you’re in the docker-greeting-app folder.
+No output: Check the container logs with docker logs <container-id>.
+Permission errors: Add yourself to the Docker group (sudo usermod -aG docker $USER, then log out and back in).
+
+License
+MIT License, so feel free to mess with it.
