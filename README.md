@@ -4,15 +4,13 @@ This is my take on the [roadmap.sh Basic Dockerfile project](https://roadmap.sh/
 
 ## What I Was Going For
 
-- Make a `Dockerfile` with `alpine:latest` as the base, ‘cause it’s lightweight and fast.
-- Get the container to say “Hello, [name]!” when it runs.
-- Add a cool trick to change the name using `GREETING_NAME` at runtime.
-- Learn how to build and run Docker images like a pro.
+- Make a `Dockerfile` with `alpine:latest` as the base, it’s lightweight and fast.
+- Get the container to say “Hello, [name]!” when it runs, changing the name using `GREETING_NAME` at runtime.
 
 ## How to Get Started
 
-### Stuff You Need
-- **Docker**: Gotta have Docker installed. Run `docker --version` to check it’s good.
+### What You Need
+- **Docker**: have Docker installed. Run `docker --version` to check it out.
 - **Git**: For grabbing the code from my repo.
 - I tested this on Linux Mint 22.2, but it should work on Linux, macOS, or Windows with Docker Desktop.
 
@@ -30,13 +28,11 @@ This is my take on the [roadmap.sh Basic Dockerfile project](https://roadmap.sh/
    ```bash
    ls
    ```
-   You should see `Dockerfile` and maybe a `greeting.sh` if I used one.
-
-If you don’t wanna use Git, just download the ZIP from GitHub and unzip it.
+   You should see `Dockerfile` .
 
 ### Building the Image
 
-Run this in the folder with the `Dockerfile`:
+Run in the folder with the `Dockerfile`:
 ```bash
 docker build -t hello-app:advanced .
 ```
@@ -61,19 +57,3 @@ If the container keeps running, stop it like this:
 docker ps
 docker stop <container-id>
 ```
-
-### What’s in the Dockerfile
-
-- Starts with `alpine:latest` for a super small image.
-- Sets up a script or command to print “Hello, $GREETING_NAME!”.
-- Defaults to `World` if you don’t set `GREETING_NAME`.
-
-### If Shit Hits the Fan
-
-- **Build fails**: Make sure Docker’s running (`sudo systemctl start docker`) and you’re in the `docker-greeting-app` folder.
-- **No output**: Check the container logs with `docker logs <container-id>`.
-- **Permission errors**: Add yourself to the Docker group (`sudo usermod -aG docker $USER`, then log out and back in).
-
-### License
-
-MIT License, so feel free to mess with it.
