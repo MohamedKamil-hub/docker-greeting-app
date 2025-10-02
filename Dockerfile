@@ -1,2 +1,2 @@
 FROM alpine:latest
-CMD  [ "sh", "-c", "echo Hello, ${1:-World}!", "--" ]
+CMD ["sh", "-c", "echo Hello, ${NAME:-World}!"]
