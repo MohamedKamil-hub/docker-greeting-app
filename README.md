@@ -52,8 +52,4 @@ docker images
   docker run -e NAME=Alice hello-app:advanced
   ```
 
-If the container keeps running, stop it like this:
-```bash
-docker ps
-docker stop <container-id>
-```
+
