@@ -49,7 +49,7 @@ docker images
   ```
 - **Custom run** (says “Hello, Alice!” or whatever name you pick):
   ```bash
-  docker run -e GREETING_NAME=Alice hello-app:advanced
+  docker run -e NAME=Alice hello-app:advanced
   ```
 
 If the container keeps running, stop it like this:
